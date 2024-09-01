@@ -228,6 +228,7 @@
 import 'package:userside/Need/emegencypage.dart';
 import 'package:userside/Need/qp.dart';
 import 'package:flutter/material.dart';
+import 'package:lottie/lottie.dart';
 
 class ItemListPage extends StatelessWidget {
   const ItemListPage({super.key});
@@ -238,87 +239,122 @@ class ItemListPage extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       home: Scaffold(
         appBar: AppBar(
-          title: Text('OPTIONS PAGE'),
-          backgroundColor: Colors.amber,
+          title: Center(
+              child: Text(
+            'Select Aid ',
+            style: TextStyle(
+              color: Colors.white,
+            ),
+          )),
+          backgroundColor: Color.fromARGB(255, 19, 0, 233),
         ),
-        body: Column(
-          children: [
-            SizedBox(
-              height: 140,
+        body: Container(
+          // adding gradient design background
+          decoration: BoxDecoration(
+            gradient: LinearGradient(
+              colors: [
+                Color.fromARGB(255, 19, 0, 233),
+                Color.fromARGB(255, 141, 139, 255)
+              ], // Your gradient colors here
+              begin: Alignment.topLeft,
+              end: Alignment.bottomRight,
             ),
-            GestureDetector(
-              onTap: () {
-                Navigator.push(context,
-                    MaterialPageRoute(builder: (context) => emergencypage()));
-              },
-              child: Container(
-                padding: EdgeInsets.all(25.0),
-                margin: EdgeInsets.symmetric(horizontal: 90),
-                decoration: BoxDecoration(
-                    color: Colors.amber,
-                    borderRadius: BorderRadius.circular(30.0)),
-                child: Center(
-                  child: Text(
-                    'EMERGENCY',
-                    style: TextStyle(
-                      color: Colors.black,
-                      fontSize: 20.0,
+          ),
+
+          //end of gradient design
+
+          child: Column(
+            children: [
+              GestureDetector(
+                onTap: () {
+                  Navigator.push(context,
+                      MaterialPageRoute(builder: (context) => qpage()));
+                },
+                child: Column(
+                  children: [
+                    Center(
+                      child: Column(
+                        children: [
+                          SizedBox(
+                            height: 25,
+                          ),
+                          Container(
+                            width: 200,
+                            height: 200,
+                            child: Lottie.asset("assets/animations/help2.json"),
+                          ),
+                          SizedBox(
+                            height: 25,
+                          ),
+                          Text(
+                            'Request help',
+                            style: TextStyle(
+                              color: Colors.white,
+                              fontSize: 24.0,
+                              fontWeight: FontWeight.bold,
+                              letterSpacing: 1.2,
+                            ),
+                          ),
+                        ],
+                      ),
                     ),
-                  ),
+                  ],
                 ),
               ),
-            ),
-            SizedBox(
-              height: 40,
-            ),
-            GestureDetector(
-              onTap: () {
-                Navigator.push(
-                    context, MaterialPageRoute(builder: (context) => qpage()));
-              },
-              child: Container(
-                padding: EdgeInsets.all(25.0),
-                margin: EdgeInsets.symmetric(horizontal: 90),
-                decoration: BoxDecoration(
-                    color: Colors.amber,
-                    borderRadius: BorderRadius.circular(30.0)),
-                child: Center(
-                  child: Text(
-                    'THINGS NEEDED',
-                    style: TextStyle(
-                      color: Colors.black,
-                      fontSize: 20.0,
+              SizedBox(height: 80),
+              GestureDetector(
+                onTap: () {
+                  Navigator.push(context,
+                      MaterialPageRoute(builder: (context) => emergencypage()));
+                },
+                child: Column(
+                  children: [
+                    Container(
+                      height: 200,
+                      width: 200,
+                      child: Lottie.asset("assets/animations/emergency2.json"),
+                      // color: Colors.white,
                     ),
-                  ),
+                    Text(
+                      'Emergency help',
+                      style: TextStyle(
+                        color: Colors.white,
+                        fontSize: 24.0,
+                        fontWeight: FontWeight.bold,
+                        letterSpacing: 1.2,
+                      ),
+                    ),
+                  ],
                 ),
               ),
-            ),
-            SizedBox(
-              height: 40,
-            ),
-            // GestureDetector(
-            //   onTap: () {
-            //     Navigator.push(context,
-            //         MaterialPageRoute(builder: (context) => emergencypage()));
-            //   },
-            //   child: Container(
-            //     padding: EdgeInsets.all(25.0),
-            //     margin: EdgeInsets.symmetric(horizontal: 90),
-            //     decoration: BoxDecoration(
-            //         color: Colors.amber,
-            //         borderRadius: BorderRadius.circular(30.0)),
-            //     child: Center(
-            //       child: Text(
-            //         'EMERGENCY',
-            //         style: TextStyle(
-            //           color: Colors.black,
-            //           fontSize: 20.0,
-            //         ),
-            //       ),
-            //     ),
-            //   ),
-            // ),
-          ],
+
+              SizedBox(
+                height: 40,
+              ),
+              // GestureDetector(
+              //   onTap: () {
+              //     Navigator.push(context,
+              //         MaterialPageRoute(builder: (context) => emergencypage()));
+              //   },
+              //   child: Container(
+              //     padding: EdgeInsets.all(25.0),
+              //     margin: EdgeInsets.symmetric(horizontal: 90),
+              //     decoration: BoxDecoration(
+              //         color: Colors.amber,
+              //         borderRadius: BorderRadius.circular(30.0)),
+              //     child: Center(
+              //       child: Text(
+              //         'EMERGENCY',
+              //         style: TextStyle(
+              //           color: Colors.black,
+              //           fontSize: 20.0,
+              //         ),
+              //       ),
+              //     ),
+              //   ),
+              // ),
+            ],
+          ),
         ),
       ),
     );
