@@ -1,4 +1,5 @@
 import 'package:flutter/widgets.dart';
+import 'package:lottie/lottie.dart';
 import 'package:userside/Need/itemslistp.dart';
 import 'package:userside/source/auth_page.dart';
 import 'package:userside/volunteer/main.dart';
@@ -47,7 +48,12 @@ class Front extends StatelessWidget {
         ),
         child: Column(
           children: [
-            SizedBox(height: 200),
+            Container(
+              child: Lottie.asset("assets/animations/particle.json",
+                  width: 420, height: 200),
+              
+            ),
+            SizedBox(height: 20),
             Center(
               child: Container(
                 decoration: BoxDecoration(

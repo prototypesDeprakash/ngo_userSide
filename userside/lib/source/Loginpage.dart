@@ -180,6 +180,9 @@ class _FrontState extends State<Front> {
                     ),
                   ),
                 ),
+                SizedBox(
+                  width: 10,
+                ),
                 GestureDetector(
                   onTap: () {
                     Navigator.push(
