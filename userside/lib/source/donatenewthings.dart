@@ -1,4 +1,5 @@
 import 'dart:io';
+import 'package:lottie/lottie.dart';
 import 'package:userside/Textfield.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
@@ -165,143 +166,226 @@ class _MyWidgetState extends State<Newthings> {
         child: Column(
           children: [
             SizedBox(height: 150),
-            Icon(Icons.logout, size: 100),
+            Lottie.asset('assets/animations/vanakam.json',
+                width: 200, height: 200),
             SizedBox(height: 30),
-            Text('Thanks for Donate', style: TextStyle(fontSize: 30.0)),
+            Text('Thanks for Donating', style: TextStyle(fontSize: 25.0)),
             SizedBox(height: 30),
-            ElevatedButton(
-              onPressed: signout,
-              child: Text('LOGOUT', style: TextStyle(color: Colors.black)),
-              style: ElevatedButton.styleFrom(
-                backgroundColor: Colors.amber,
-                textStyle: TextStyle(color: Colors.black, fontSize: 20),
-                padding: EdgeInsets.symmetric(vertical: 10.0, horizontal: 20.0),
-                shape: RoundedRectangleBorder(
+            Text(' "Your donation matters" ',
+                style: TextStyle(fontSize: 20.0, fontStyle: FontStyle.italic)),
+            SizedBox(height: 30),
+
+            //old button --1
+            // ElevatedButton(
+            //   onPressed: signout,
+            //   child: Text('Logout', style: TextStyle(color: Colors.black)),
+            //   style: ElevatedButton.styleFrom(
+            //     backgroundColor: Colors.amber,
+            //     textStyle: TextStyle(color: Colors.black, fontSize: 20),
+            //     padding: EdgeInsets.symmetric(vertical: 10.0, horizontal: 20.0),
+            //     shape: RoundedRectangleBorder(
+            //       borderRadius: BorderRadius.circular(30.0),
+            //     ),
+            //   ),
+            // ),
+
+            //new button code
+            GestureDetector(
+              onTap: signout,
+              child: Container(
+                decoration: BoxDecoration(
+                  gradient: LinearGradient(
+                    colors: [
+                      Color.fromARGB(255, 115, 0, 255),
+                      Color.fromARGB(255, 190, 111, 255)
+                    ],
+                    begin: Alignment.topLeft,
+                    end: Alignment.bottomRight,
+                  ),
                   borderRadius: BorderRadius.circular(30.0),
+                  boxShadow: [
+                    BoxShadow(
+                      color: Colors.black.withOpacity(0.3),
+                      spreadRadius: 2,
+                      blurRadius: 5,
+                      offset: Offset(0, 4), // Shadow position
+                    ),
+                  ],
                 ),
+                child: Center(
+                    child: Text(
+                  "Logout",
+                  style: TextStyle(
+                    color: Colors.white,
+                    fontSize: 18.0,
+                    fontWeight: FontWeight.bold,
+                    letterSpacing: 1.2, // Adds spacing between letters
+                  ),
+                )),
+                width: 200,
+                height: 50,
               ),
             ),
           ],
         ),
       ),
       resizeToAvoidBottomInset: false,
+
+      //end of app drawer
+
+      //app bar starts ....
+
       appBar: AppBar(
-        title: Text('DONATE PAGE'),
-        backgroundColor: Colors.amber,
+        //   leading: IconButton(onPressed: Drawer.new, icon: Icon(Icons.menu)),
+        title: Row(
+          children: [
+            SizedBox(
+              width: 90,
+            ),
+            Text(
+              'Donate',
+              style: TextStyle(color: const Color.fromARGB(255, 255, 255, 255)),
+            ),
+          ],
+        ),
+        backgroundColor: const Color.fromARGB(255, 19, 0, 233),
       ),
-      body: Column(
-        children: [
-          SizedBox(height: 40),
-          Textfield(
-            controller: pname,
-            obsecuretext: false,
-            hinttext: 'Product Name',
-            i: Icon(Icons.shopping_cart),
+      body: Container(
+        decoration: BoxDecoration(
+          gradient: LinearGradient(
+            colors: [
+              Color.fromARGB(255, 19, 0, 233),
+              Color.fromARGB(255, 141, 139, 255)
+            ], // Your gradient colors here
+            begin: Alignment.topLeft,
+            end: Alignment.bottomRight,
           ),
-          SizedBox(height: 40),
-          Textfield(
-            obsecuretext: false,
-            hinttext: 'Product Description',
-            controller: des,
-            i: Icon(Icons.description),
-          ),
-          SizedBox(height: 40),
-          GestureDetector(
-            onTap: _pickImage,
-            child: Container(
-              padding: EdgeInsets.all(25.0),
-              margin: EdgeInsets.symmetric(horizontal: 90),
-              decoration: BoxDecoration(
-                  color: Colors.amber,
-                  borderRadius: BorderRadius.circular(30.0)),
-              child: Center(
-                child: Text(
-                  _image == null
-                      ? 'PICK IMAGE FROM GALLERY'
-                      : 'GALLERY IMAGE SELECTED',
-                  style: TextStyle(
-                    color: Colors.black,
-                    fontSize: 20.0,
+        ),
+        child: Column(
+          children: [
+            SizedBox(height: 40),
+            Textfield(
+              controller: pname,
+              obsecuretext: false,
+              hinttext: 'Product Name',
+              i: Icon(
+                Icons.shopping_cart,
+                color: Colors.white,
+              ),
+            ),
+            SizedBox(height: 40),
+            Textfield(
+              obsecuretext: false,
+              hinttext: 'Product Description',
+              controller: des,
+              i: Icon(
+                Icons.description,
+                color: Colors.white,
+              ),
+            ),
+            SizedBox(height: 40),
+
+            //first box   
+
+
+            
+            GestureDetector(
+              onTap: _pickImage,
+              child: Container(
+                padding: EdgeInsets.all(25.0),
+                margin: EdgeInsets.symmetric(horizontal: 90),
+                decoration: BoxDecoration(
+                    color: Colors.amber,
+                    borderRadius: BorderRadius.circular(30.0)),
+                child: Center(
+                  child: Text(
+                    _image == null
+                        ? 'PICK IMAGE FROM GALLERY'
+                        : 'GALLERY IMAGE SELECTED',
+                    style: TextStyle(
+                      color: Colors.black,
+                      fontSize: 20.0,
+                    ),
                   ),
                 ),
               ),
             ),
-          ),
-          SizedBox(height: 20.0),
-          GestureDetector(
-            onTap: _pickImage1,
-            child: Container(
-              padding: EdgeInsets.all(25.0),
-              margin: EdgeInsets.symmetric(horizontal: 90),
-              decoration: BoxDecoration(
-                  color: Colors.amber,
-                  borderRadius: BorderRadius.circular(30.0)),
-              child: Center(
-                child: Text(
-                  _image1 == null
-                      ? 'PICK IMAGE FROM CAMERA'
-                      : 'CAMERA IMAGE SELECTED',
-                  style: TextStyle(
-                    color: Colors.black,
-                    fontSize: 20.0,
+            SizedBox(height: 20.0),
+            GestureDetector(
+              onTap: _pickImage1,
+              child: Container(
+                padding: EdgeInsets.all(25.0),
+                margin: EdgeInsets.symmetric(horizontal: 90),
+                decoration: BoxDecoration(
+                    color: Colors.amber,
+                    borderRadius: BorderRadius.circular(30.0)),
+                child: Center(
+                  child: Text(
+                    _image1 == null
+                        ? 'PICK IMAGE FROM CAMERA'
+                        : 'CAMERA IMAGE SELECTED',
+                    style: TextStyle(
+                      color: Colors.black,
+                      fontSize: 20.0,
+                    ),
                   ),
                 ),
               ),
             ),
-          ),
-          SizedBox(height: 20.0),
-          GestureDetector(
-            onTap: () async {
-              try {
-                await _getLocation();
-              } catch (e) {
-                showDialog(
-                    context: context,
-                    builder: (context) {
-                      return AlertDialog(
-                        title: Text('$e'),
-                      );
-                    });
-              }
-            },
-            child: Container(
-              padding: EdgeInsets.all(25.0),
-              margin: EdgeInsets.symmetric(horizontal: 90),
-              decoration: BoxDecoration(
-                  color: Colors.amber,
-                  borderRadius: BorderRadius.circular(30.0)),
-              child: Center(
-                child: Text(
-                  long == null ? 'GET LOCATION' : 'LOCATION DETECTED',
-                  style: TextStyle(
-                    color: Colors.black,
-                    fontSize: 20.0,
+            SizedBox(height: 20.0),
+            GestureDetector(
+              onTap: () async {
+                try {
+                  await _getLocation();
+                } catch (e) {
+                  showDialog(
+                      context: context,
+                      builder: (context) {
+                        return AlertDialog(
+                          title: Text('$e'),
+                        );
+                      });
+                }
+              },
+              child: Container(
+                padding: EdgeInsets.all(25.0),
+                margin: EdgeInsets.symmetric(horizontal: 90),
+                decoration: BoxDecoration(
+                    color: Colors.amber,
+                    borderRadius: BorderRadius.circular(30.0)),
+                child: Center(
+                  child: Text(
+                    long == null ? 'GET LOCATION' : 'LOCATION DETECTED',
+                    style: TextStyle(
+                      color: Colors.black,
+                      fontSize: 20.0,
+                    ),
                   ),
                 ),
               ),
             ),
-          ),
-          SizedBox(height: 20.0),
-          GestureDetector(
-            onTap: subm,
-            child: Container(
-              padding: EdgeInsets.all(25.0),
-              margin: EdgeInsets.symmetric(horizontal: 90),
-              decoration: BoxDecoration(
-                  color: Colors.amber,
-                  borderRadius: BorderRadius.circular(30.0)),
-              child: Center(
-                child: Text(
-                  'SUBMIT',
-                  style: TextStyle(
-                    color: Colors.black,
-                    fontSize: 20.0,
+            SizedBox(height: 20.0),
+            GestureDetector(
+              onTap: subm,
+              child: Container(
+                padding: EdgeInsets.all(25.0),
+                margin: EdgeInsets.symmetric(horizontal: 90),
+                decoration: BoxDecoration(
+                    color: Colors.amber,
+                    borderRadius: BorderRadius.circular(30.0)),
+                child: Center(
+                  child: Text(
+                    'SUBMIT',
+                    style: TextStyle(
+                      color: Colors.black,
+                      fontSize: 20.0,
+                    ),
                   ),
                 ),
               ),
             ),
-          ),
-        ],
+          ],
+        ),
       ),
     );
   }

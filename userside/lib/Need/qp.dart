@@ -88,8 +88,9 @@ class _qpageState extends State<qpage> {
       appBar: AppBar(
         automaticallyImplyLeading: false,
         title: Center(
+          
           child: Text(
-            'Querry Page',
+            'What\'s your need ',
             style: TextStyle(color: Colors.white),
           ),
         ),
