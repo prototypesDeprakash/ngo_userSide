@@ -88,88 +88,123 @@ class _qpageState extends State<qpage> {
       appBar: AppBar(
         automaticallyImplyLeading: false,
         title: Center(
+          
           child: Text(
-            'Querry Page',
+            'What\'s your need ',
             style: TextStyle(color: Colors.white),
           ),
         ),
         backgroundColor: const Color.fromARGB(255, 19, 0, 233),
       ),
-      body: Container(
-        //background gradient
-        decoration: BoxDecoration(
-          gradient: LinearGradient(
-            colors: [
-              Color.fromARGB(255, 19, 0, 233),
-              Color.fromARGB(255, 141, 139, 255)
-            ], // Your gradient colors here
-            begin: Alignment.topLeft,
-            end: Alignment.bottomRight,
-          ),
-        ),
-
-        padding: EdgeInsets.all(15.0),
+      body: SingleChildScrollView(
         child: Container(
-          child: Column(
-            children: [
-              SizedBox(height: 30.0),
-              Lottie.asset(
-                "assets/animations/hold.json",
-                width: 150,
-                height: 150,
-              ),
-              SizedBox(
-                height: 50,
-              ),
-              Textfield(
-                hinttext: 'Enter the Query',
-                obsecuretext: false,
-                i: Icon(
-                  Icons.type_specimen,
-                  color: Colors.white,
+          //background gradient
+          decoration: BoxDecoration(
+            gradient: LinearGradient(
+              colors: [
+                Color.fromARGB(255, 19, 0, 233),
+                Color.fromARGB(255, 141, 139, 255)
+              ], // Your gradient colors here
+              begin: Alignment.topLeft,
+              end: Alignment.bottomRight,
+            ),
+          ),
+
+          padding: EdgeInsets.all(10.0),
+          child: Container(
+            child: Column(
+              children: [
+                Container(
+                  child: Lottie.asset(
+                    "assets/animations/request_need.json",
+                    width: 300,
+                    height: 300,
+                  ),
+                  width: 250,
+                  height: 250,
                 ),
-                controller: quertext,
-              ),
-              SizedBox(height: 20.0),
-              Textfield(
-                hinttext: 'Enter your Name',
-                obsecuretext: false,
-                i: Icon(
-                  Icons.person,
-                  color: Colors.white,
+                SizedBox(
+                  height: 10,
                 ),
-                controller: nameController,
-              ),
-              SizedBox(height: 20.0),
-              Textfield(
-                hinttext: 'Enter your Phone Number',
-                obsecuretext: false,
-                i: Icon(
-                  Icons.phone,
-                  color: Colors.white,
+                Textfield(
+                  hinttext: 'Enter the Query',
+                  obsecuretext: false,
+                  i: Icon(
+                    Icons.type_specimen,
+                    color: Colors.white,
+                  ),
+                  controller: quertext,
                 ),
-                controller: phoneController,
-              ),
-              SizedBox(height: 20.0),
-              Textfield(
-                hinttext: 'Enter your Address',
-                obsecuretext: false,
-                i: Icon(
-                  Icons.location_city,
-                  color: Colors.white,
+                SizedBox(height: 20.0),
+                Textfield(
+                  hinttext: 'Enter your Name',
+                  obsecuretext: false,
+                  i: Icon(
+                    Icons.person,
+                    color: Colors.white,
+                  ),
+                  controller: nameController,
                 ),
-                controller: addressController,
-              ),
-              SizedBox(height: 20.0),
-              GestureDetector(
-                onTap: postQuery,
-                child: Container(
-                  width: 100,
-                  height: 100,
-                  color: Colors.white,
+                SizedBox(height: 20.0),
+                Textfield(
+                  hinttext: 'Enter your Phone Number',
+                  obsecuretext: false,
+                  i: Icon(
+                    Icons.phone,
+                    color: Colors.white,
+                  ),
+                  controller: phoneController,
                 ),
-              ),
-            ],
+                SizedBox(height: 20.0),
+                Textfield(
+                  hinttext: 'Enter your Address',
+                  obsecuretext: false,
+                  i: Icon(
+                    Icons.location_city,
+                    color: Colors.white,
+                  ),
+                  controller: addressController,
+                ),
+                SizedBox(height: 70.0),
+                GestureDetector(
+                  onTap: postQuery,
+                  child: Container(
+                    decoration: BoxDecoration(
+                      gradient: LinearGradient(
+                        colors: [
+                          Color.fromARGB(255, 115, 0, 255),
+                          Color.fromARGB(255, 190, 111, 255)
+                        ],
+                        begin: Alignment.topLeft,
+                        end: Alignment.bottomRight,
+                      ),
+                      borderRadius: BorderRadius.circular(30.0),
+                      boxShadow: [
+                        BoxShadow(
+                          color: Colors.black.withOpacity(0.3),
+                          spreadRadius: 2,
+                          blurRadius: 5,
+                          offset: Offset(0, 4), // Shadow position
+                        ),
+                      ],
+                    ),
+                    child: Center(
+                        child: Text(
+                      "Send",
+                      style: TextStyle(
+                        color: Colors.white,
+                        fontSize: 18.0,
+                        fontWeight: FontWeight.bold,
+                        letterSpacing: 1.2, // Adds spacing between letters
+                      ),
+                    )),
+                    width: 200,
+                    height: 50,
+                  ),
+                ),
+                SizedBox(height: 90.0),
+              ],
+            ),
           ),
         ),
       ),

@@ -48,12 +48,12 @@ class Front extends StatelessWidget {
         ),
         child: Column(
           children: [
-            Container(
-              child: Lottie.asset("assets/animations/particle.json",
-                  width: 420, height: 200),
-              
-            ),
-            SizedBox(height: 20),
+            // Container(
+            //   child: Lottie.asset("assets/animations/particle.json",
+            //       width: 420, height: 200),
+
+            // ),
+            SizedBox(height: 190),
             Center(
               child: Container(
                 decoration: BoxDecoration(
@@ -80,11 +80,23 @@ class Front extends StatelessWidget {
             ),
             SizedBox(height: 20),
             Text(
-              'Give Together',
+              'SANVI',
               style: TextStyle(
                 fontSize: 20,
                 fontWeight: FontWeight.bold,
-                fontFamily: 'Georgia',
+                fontFamily: 'airel',
+                color: Colors.white,
+              ),
+            ),
+            SizedBox(
+              height: 10,
+            ),
+            Text(
+              ' "Giving Made Simple, Impact Made Big"',
+              style: TextStyle(
+                fontSize: 17,
+                fontStyle: FontStyle.italic,
+                fontFamily: 'airel',
                 color: Colors.white,
               ),
             ),
@@ -205,7 +217,7 @@ class Front extends StatelessWidget {
                 ),
                 child: Center(
                   child: Text(
-                    'Volunteer',
+                    'Voluntear',
                     style: TextStyle(
                       color: Colors.white,
                       fontSize: 18.0,
