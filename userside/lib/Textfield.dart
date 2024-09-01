@@ -14,20 +14,28 @@ class Textfield extends StatelessWidget {
     return Padding(
       padding: EdgeInsets.symmetric(horizontal: 20.0),
       child: TextField(
+        style: TextStyle(color: Colors.white),
         cursorColor: Colors.amber,
         controller: controller,
         obscureText: obsecuretext,
         decoration: InputDecoration(
-          icon: i,
-          enabledBorder: OutlineInputBorder(
-            borderRadius: BorderRadius.all(Radius.circular(20.0)),
-          ),
-          focusedBorder: OutlineInputBorder(
-            borderRadius: BorderRadius.all(Radius.circular(20.0)),
-          ),
-          hintText: hinttext,
-          // cursorWidth: 10.0,
-        ),
+            icon: i,
+            enabledBorder: OutlineInputBorder(
+              borderSide: BorderSide(color: Colors.white),
+              borderRadius: BorderRadius.all(Radius.circular(20.0)),
+              
+            ),
+            focusedBorder: OutlineInputBorder(
+              borderSide: BorderSide(color: Colors.white),
+              borderRadius: BorderRadius.all(Radius.circular(20.0)),
+              
+            ),
+            hintText: hinttext,
+            hintStyle: TextStyle(
+              color: Colors.white,
+            )
+            // cursorWidth: 10.0,
+            ),
       ),
     );
   }

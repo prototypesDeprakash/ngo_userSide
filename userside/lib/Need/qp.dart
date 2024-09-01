@@ -1,3 +1,4 @@
+import 'package:lottie/lottie.dart';
 import 'package:userside/Textfield.dart';
 import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
@@ -85,61 +86,91 @@ class _qpageState extends State<qpage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('QUERY PAGE'),
-        backgroundColor: Colors.amber,
+        automaticallyImplyLeading: false,
+        title: Center(
+          child: Text(
+            'Querry Page',
+            style: TextStyle(color: Colors.white),
+          ),
+        ),
+        backgroundColor: const Color.fromARGB(255, 19, 0, 233),
       ),
-      body: SingleChildScrollView(
-        padding: EdgeInsets.all(16.0),
-        child: Column(
-          children: [
-            Textfield(
-              hinttext: 'Enter the Query',
-              obsecuretext: false,
-              i: Icon(Icons.query_builder),
-              controller: quertext,
-            ),
-            SizedBox(height: 20.0),
-            Textfield(
-              hinttext: 'Enter your Name',
-              obsecuretext: false,
-              i: Icon(Icons.person),
-              controller: nameController,
-            ),
-            SizedBox(height: 20.0),
-            Textfield(
-              hinttext: 'Enter your Phone Number',
-              obsecuretext: false,
-              i: Icon(Icons.phone),
-              controller: phoneController,
-            ),
-            SizedBox(height: 20.0),
-            Textfield(
-              hinttext: 'Enter your Address',
-              obsecuretext: false,
-              i: Icon(Icons.location_city),
-              controller: addressController,
-            ),
-            SizedBox(height: 20.0),
-            GestureDetector(
-              onTap: postQuery,
-              child: Container(
-                padding: EdgeInsets.all(15.0),
-                margin: EdgeInsets.symmetric(horizontal: 90),
-                decoration: BoxDecoration(
-                    color: Colors.amber,
-                    borderRadius: BorderRadius.circular(30.0)),
-                child: Center(
-                  child: Text(
-                    'SUBMIT',
-                    style: TextStyle(
-                      color: Colors.black,
-                      fontSize: 20.0,
-                    ),
-                  ),
+      body: Container(
+        //background gradient
+        decoration: BoxDecoration(
+          gradient: LinearGradient(
+            colors: [
+              Color.fromARGB(255, 19, 0, 233),
+              Color.fromARGB(255, 141, 139, 255)
+            ], // Your gradient colors here
+            begin: Alignment.topLeft,
+            end: Alignment.bottomRight,
+          ),
+        ),
+
+        padding: EdgeInsets.all(15.0),
+        child: Container(
+          child: Column(
+            children: [
+              SizedBox(height: 30.0),
+              Lottie.asset(
+                "assets/animations/hold.json",
+                width: 150,
+                height: 150,
+              ),
+              SizedBox(
+                height: 50,
+              ),
+              Textfield(
+                hinttext: 'Enter the Query',
+                obsecuretext: false,
+                i: Icon(
+                  Icons.type_specimen,
+                  color: Colors.white,
+                ),
+                controller: quertext,
+              ),
+              SizedBox(height: 20.0),
+              Textfield(
+                hinttext: 'Enter your Name',
+                obsecuretext: false,
+                i: Icon(
+                  Icons.person,
+                  color: Colors.white,
+                ),
+                controller: nameController,
+              ),
+              SizedBox(height: 20.0),
+              Textfield(
+                hinttext: 'Enter your Phone Number',
+                obsecuretext: false,
+                i: Icon(
+                  Icons.phone,
+                  color: Colors.white,
+                ),
+                controller: phoneController,
+              ),
+              SizedBox(height: 20.0),
+              Textfield(
+                hinttext: 'Enter your Address',
+                obsecuretext: false,
+                i: Icon(
+                  Icons.location_city,
+                  color: Colors.white,
+                ),
+                controller: addressController,
+              ),
+              SizedBox(height: 20.0),
+              GestureDetector(
+                onTap: postQuery,
+                child: Container(
+                  width: 100,
+                  height: 100,
+                  color: Colors.white,
                 ),
               ),
-            ),
-          ],
+            ],
+          ),
         ),
       ),
     );
