@@ -48,12 +48,12 @@ class Front extends StatelessWidget {
         ),
         child: Column(
           children: [
-            Container(
-              child: Lottie.asset("assets/animations/particle.json",
-                  width: 420, height: 200),
-              
-            ),
-            SizedBox(height: 20),
+            // Container(
+            //   child: Lottie.asset("assets/animations/particle.json",
+            //       width: 420, height: 200),
+
+            // ),
+            SizedBox(height: 190),
             Center(
               child: Container(
                 decoration: BoxDecoration(
