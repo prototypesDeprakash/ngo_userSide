@@ -280,9 +280,9 @@ class ItemListPage extends StatelessWidget {
                             height: 25,
                           ),
                           Container(
-                            width: 200,
-                            height: 200,
-                            child: Lottie.asset("assets/animations/help2.json"),
+                            width: 250,
+                            height: 250,
+                            child: Lottie.asset("assets/animations/aid.json"),
                           ),
                           SizedBox(
                             height: 25,
@@ -302,7 +302,7 @@ class ItemListPage extends StatelessWidget {
                   ],
                 ),
               ),
-              SizedBox(height: 80),
+              SizedBox(height: 60),
               GestureDetector(
                 onTap: () {
                   Navigator.push(context,
