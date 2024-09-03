@@ -15,6 +15,7 @@ class _RegisterpageState extends State<Registerpage> {
   Widget build(BuildContext context) {
     final email = TextEditingController();
     final pass = TextEditingController();
+    bool showIndicator = false;
     final passcnfm = TextEditingController();
     void dis(s) {
       showDialog(
@@ -27,6 +28,10 @@ class _RegisterpageState extends State<Registerpage> {
     }
 
     void passcheck() async {
+      setState(() {
+        showIndicator = true;
+      });
+
       showDialog(
           context: context,
           builder: (context) {
@@ -47,6 +52,7 @@ class _RegisterpageState extends State<Registerpage> {
 
           if (user != null) {
             user.updateDisplayName("donate");
+            // Navigator.of(context).pop();
             print("user details is ${user.displayName}");
 
             WidgetsBinding.instance.addPostFrameCallback((_) {
@@ -64,7 +70,7 @@ class _RegisterpageState extends State<Registerpage> {
         } on FirebaseAuthException catch (e) {
           String x = e.code.toString();
           if (x != '') {
-            dis(e.code);
+            // dis(e.code);
           }
         } catch (e) {
           print(e);
@@ -78,7 +84,7 @@ class _RegisterpageState extends State<Registerpage> {
               );
             });
       }
-      Navigator.of(context).pop();
+      // Navigator.of(context).pop();
     }
 
     return Scaffold(

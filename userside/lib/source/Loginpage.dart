@@ -55,6 +55,7 @@ class _FrontState extends State<Front> {
             context,
             MaterialPageRoute(builder: (context) => Newthings()),
           );
+          // Navigator.of(context).pop();
         });
       } else {
         print("User is null or not suitable");
@@ -62,7 +63,7 @@ class _FrontState extends State<Front> {
     } on FirebaseAuthException catch (e) {
       wrongpass1(e.code == '');
     }
-    Navigator.of(context).pop();
+    // Navigator.of(context).pop();
   }
 
   wrongpass1(s) {
