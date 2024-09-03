@@ -1,5 +1,6 @@
 import 'package:lottie/lottie.dart';
 import 'package:userside/Textfield.dart';
+import 'package:userside/source/donatenewthings.dart';
 import 'package:userside/source/registerpage.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
@@ -41,8 +42,23 @@ class _FrontState extends State<Front> {
           );
         });
     try {
-      await FirebaseAuth.instance.signInWithEmailAndPassword(
-          email: username.text, password: password.text);
+      User user = (await FirebaseAuth.instance.signInWithEmailAndPassword(
+              email: username.text, password: password.text))
+          .user!;
+
+      if (user != null && user.displayName == 'donate') {
+        print("user is not nuull for donate");
+
+        // Navigator.push(context, MaterialPageRoute(builder: (context)=>Newthings()));
+        WidgetsBinding.instance.addPostFrameCallback((_) {
+          Navigator.push(
+            context,
+            MaterialPageRoute(builder: (context) => Newthings()),
+          );
+        });
+      } else {
+        print("User is null or not suitable");
+      }
     } on FirebaseAuthException catch (e) {
       wrongpass1(e.code == '');
     }

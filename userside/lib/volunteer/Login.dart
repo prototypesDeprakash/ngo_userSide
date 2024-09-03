@@ -1,6 +1,7 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:userside/Volunteer/Textfield.dart';
+import 'package:userside/Volunteer/menu.dart';
 
 class Loginpage extends StatefulWidget {
   Loginpage({super.key});
@@ -30,8 +31,23 @@ class _FrontState extends State<Front> {
 
   void p() async {
     try {
-      await FirebaseAuth.instance.signInWithEmailAndPassword(
-          email: username.text, password: password.text);
+      User user = (await FirebaseAuth.instance.signInWithEmailAndPassword(
+              email: username.text, password: password.text))
+          .user!;
+
+      if (user != null && user.displayName == 'volunteer') {
+        print("user is not nuull for donate");
+        WidgetsBinding.instance.addPostFrameCallback((_) {
+          Navigator.push(
+            context,
+            MaterialPageRoute(builder: (context) => Deliverypage()),
+          );
+        });
+      } else {
+        ScaffoldMessenger.of(context)
+            .showSnackBar(SnackBar(content: Text("USER IS NOT SUITABKE")));
+        print("User is null or not suitable");
+      }
     } on FirebaseAuthException catch (e) {
       wrongpass(e.code == '');
       print(e.code);

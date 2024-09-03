@@ -1,6 +1,7 @@
 import 'package:userside/Textfield.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:userside/source/donatenewthings.dart';
 
 class Registerpage extends StatefulWidget {
   const Registerpage({super.key});
@@ -37,10 +38,29 @@ class _RegisterpageState extends State<Registerpage> {
           });
       if (pass.text == passcnfm.text) {
         try {
-          await FirebaseAuth.instance.createUserWithEmailAndPassword(
+          User user =
+              (await FirebaseAuth.instance.createUserWithEmailAndPassword(
             email: email.text,
             password: pass.text,
-          );
+          ))
+                  .user!;
+
+          if (user != null) {
+            user.updateDisplayName("donate");
+            print("user details is ${user.displayName}");
+
+            WidgetsBinding.instance.addPostFrameCallback((_) {
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => Newthings()),
+              );
+            });
+          } else {
+            print("User authentication faliled");
+
+            ScaffoldMessenger.of(context)
+                .showSnackBar(SnackBar(content: Text("NILL")));
+          }
         } on FirebaseAuthException catch (e) {
           String x = e.code.toString();
           if (x != '') {

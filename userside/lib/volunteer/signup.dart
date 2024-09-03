@@ -1,6 +1,7 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:userside/Volunteer/Textfield.dart';
+import 'package:userside/Volunteer/menu.dart';
 
 class Registerpage extends StatefulWidget {
   const Registerpage({super.key});
@@ -28,10 +29,25 @@ class _RegisterpageState extends State<Registerpage> {
     void passcheck() async {
       if (pass.text == passcnfm.text) {
         try {
-          await FirebaseAuth.instance.createUserWithEmailAndPassword(
+          User user =
+              (await FirebaseAuth.instance.createUserWithEmailAndPassword(
             email: email.text,
             password: pass.text,
-          );
+          ))
+                  .user!;
+
+          if (user != null) {
+            user.updateDisplayName("volunteer");
+            print("USER IS NOT NULL");
+            WidgetsBinding.instance.addPostFrameCallback((_) {
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => Deliverypage()),
+              );
+            });
+          } else {
+            print("print unsucessfull");
+          }
         } on FirebaseAuthException catch (e) {
           String x = e.code.toString();
           if (x != '') {

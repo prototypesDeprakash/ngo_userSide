@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:userside/Volunteer/authpage.dart';
 import 'package:userside/Volunteer/signup.dart';
+import 'package:userside/Volunteer/Login.dart';
+import 'package:userside/volunteer/requestForVolunteer.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -63,8 +65,15 @@ class Front extends StatelessWidget {
           SizedBox(
             height: 30.0,
           ),
+
+          // ! LOGIN
           GestureDetector(
-            onTap: loginpage,
+            onTap: () {
+              Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                      builder: (context) => Requestforvolunteer()));
+            },
             child: Container(
               padding: EdgeInsets.all(25.0),
               margin: EdgeInsets.symmetric(horizontal: 25),
@@ -73,7 +82,7 @@ class Front extends StatelessWidget {
                   borderRadius: BorderRadius.circular(8.0)),
               child: Center(
                 child: Text(
-                  'LOGIN',
+                  'REQUEST AS VOLUNTEER',
                   style: TextStyle(color: Colors.white, fontSize: 20.0),
                 ),
               ),
@@ -81,7 +90,10 @@ class Front extends StatelessWidget {
           ),
           SizedBox(height: 20),
           GestureDetector(
-            onTap: signup,
+            onTap: () {
+              Navigator.push(context,
+                  MaterialPageRoute(builder: (context) => Loginpage()));
+            },
             child: Container(
               padding: EdgeInsets.all(25.0),
               margin: EdgeInsets.symmetric(horizontal: 25),
@@ -90,7 +102,7 @@ class Front extends StatelessWidget {
                   borderRadius: BorderRadius.circular(8.0)),
               child: Center(
                 child: Text(
-                  'SIGN UP',
+                  'LOGIN ',
                   style: TextStyle(color: Colors.white, fontSize: 20.0),
                 ),
               ),
