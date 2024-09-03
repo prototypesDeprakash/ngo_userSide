@@ -263,6 +263,11 @@ class _MyWidgetState extends State<Newthings> {
         ),
         child: Column(
           children: [
+            Container(
+              child: Lottie.asset("assets/animations/help2.json",
+                  width: 150, height: 150),
+              //color: Colors.white,
+            ),
             SizedBox(height: 40),
             Textfield(
               controller: pname,
@@ -273,7 +278,7 @@ class _MyWidgetState extends State<Newthings> {
                 color: Colors.white,
               ),
             ),
-            SizedBox(height: 40),
+            SizedBox(height: 20),
             Textfield(
               obsecuretext: false,
               hinttext: 'Product Description',
@@ -285,54 +290,124 @@ class _MyWidgetState extends State<Newthings> {
             ),
             SizedBox(height: 40),
 
-            //first box   
+            //first box
 
+            //first button
 
-            
             GestureDetector(
               onTap: _pickImage,
               child: Container(
-                padding: EdgeInsets.all(25.0),
-                margin: EdgeInsets.symmetric(horizontal: 90),
+                padding: EdgeInsets.symmetric(vertical: 15.0, horizontal: 25.0),
+                margin: EdgeInsets.symmetric(horizontal: 50),
                 decoration: BoxDecoration(
-                    color: Colors.amber,
-                    borderRadius: BorderRadius.circular(30.0)),
-                child: Center(
-                  child: Text(
-                    _image == null
-                        ? 'PICK IMAGE FROM GALLERY'
-                        : 'GALLERY IMAGE SELECTED',
-                    style: TextStyle(
-                      color: Colors.black,
-                      fontSize: 20.0,
-                    ),
+                  gradient: LinearGradient(
+                    colors: [
+                      Color.fromARGB(255, 19, 0, 233),
+                      Color.fromARGB(255, 141, 139, 255)
+                    ],
+                    begin: Alignment.topLeft,
+                    end: Alignment.bottomRight,
                   ),
+                  borderRadius: BorderRadius.circular(30.0),
+                  boxShadow: [
+                    BoxShadow(
+                      color: Colors.black.withOpacity(0.3),
+                      spreadRadius: 2,
+                      blurRadius: 5,
+                      offset: Offset(0, 4), // Shadow position
+                    ),
+                  ],
+                ),
+                child: Row(
+                  //animation
+                  children: [
+                    _image == null
+                        ? Lottie.asset("assets/animations/select.json",
+                            width: 50, height: 50)
+                        : Lottie.asset("assets/animations/done2.json",
+                            width: 50, height: 50),
+
+                    //animation ends
+                    //space after animation
+                    SizedBox(
+                      width: 15,
+                    ),
+
+                    Center(
+                      child: Text(
+                        _image == null ? 'Select from gallery' : 'Selected',
+                        style: TextStyle(
+                          color: const Color.fromARGB(255, 255, 255, 255),
+                          fontSize: 20.0,
+                        ),
+                      ),
+                    ),
+                  ],
                 ),
               ),
             ),
+
+            //first button ends here
+
+            //gap before second button
+
             SizedBox(height: 20.0),
+
             GestureDetector(
               onTap: _pickImage1,
               child: Container(
-                padding: EdgeInsets.all(25.0),
-                margin: EdgeInsets.symmetric(horizontal: 90),
+                padding: EdgeInsets.symmetric(vertical: 15.0, horizontal: 25.0),
+                margin: EdgeInsets.symmetric(horizontal: 50),
                 decoration: BoxDecoration(
-                    color: Colors.amber,
-                    borderRadius: BorderRadius.circular(30.0)),
-                child: Center(
-                  child: Text(
-                    _image1 == null
-                        ? 'PICK IMAGE FROM CAMERA'
-                        : 'CAMERA IMAGE SELECTED',
-                    style: TextStyle(
-                      color: Colors.black,
-                      fontSize: 20.0,
-                    ),
+                  gradient: LinearGradient(
+                    colors: [
+                      Color.fromARGB(255, 19, 0, 233),
+                      Color.fromARGB(255, 141, 139, 255)
+                    ],
+                    begin: Alignment.topLeft,
+                    end: Alignment.bottomRight,
                   ),
+                  borderRadius: BorderRadius.circular(30.0),
+                  boxShadow: [
+                    BoxShadow(
+                      color: Colors.black.withOpacity(0.3),
+                      spreadRadius: 2,
+                      blurRadius: 5,
+                      offset: Offset(0, 4), // Shadow position
+                    ),
+                  ],
+                ),
+                child: Row(
+                  //animation
+                  children: [
+                    _image1 == null
+                        ? Lottie.asset("assets/animations/camera2.json",
+                            width: 50, height: 50)
+                        : Lottie.asset("assets/animations/done2.json",
+                            width: 50, height: 50),
+
+                    //animation ends
+                    //space after animation
+                    SizedBox(
+                      width: 15,
+                    ),
+
+                    Center(
+                      child: Text(
+                        _image1 == null ? 'Open camera' : 'Selected',
+                        style: TextStyle(
+                          color: const Color.fromARGB(255, 255, 255, 255),
+                          fontSize: 20.0,
+                        ),
+                      ),
+                    ),
+                  ],
                 ),
               ),
             ),
+
             SizedBox(height: 20.0),
+
             GestureDetector(
               onTap: () async {
                 try {
@@ -348,40 +423,91 @@ class _MyWidgetState extends State<Newthings> {
                 }
               },
               child: Container(
-                padding: EdgeInsets.all(25.0),
-                margin: EdgeInsets.symmetric(horizontal: 90),
+                padding: EdgeInsets.symmetric(vertical: 15.0, horizontal: 25.0),
+                margin: EdgeInsets.symmetric(horizontal: 50),
                 decoration: BoxDecoration(
-                    color: Colors.amber,
-                    borderRadius: BorderRadius.circular(30.0)),
-                child: Center(
-                  child: Text(
-                    long == null ? 'GET LOCATION' : 'LOCATION DETECTED',
-                    style: TextStyle(
-                      color: Colors.black,
-                      fontSize: 20.0,
-                    ),
+                  gradient: LinearGradient(
+                    colors: [
+                      Color.fromARGB(255, 19, 0, 233),
+                      Color.fromARGB(255, 141, 139, 255)
+                    ],
+                    begin: Alignment.topLeft,
+                    end: Alignment.bottomRight,
                   ),
+                  borderRadius: BorderRadius.circular(30.0),
+                  boxShadow: [
+                    BoxShadow(
+                      color: Colors.black.withOpacity(0.3),
+                      spreadRadius: 2,
+                      blurRadius: 5,
+                      offset: Offset(0, 4), // Shadow position
+                    ),
+                  ],
+                ),
+                child: Row(
+                  //animation
+                  children: [
+                    long == null
+                        ? Lottie.asset("assets/animations/location.json",
+                            width: 50, height: 50)
+                        : Lottie.asset("assets/animations/done2.json",
+                            width: 50, height: 50),
+
+                    //animation ends
+                    //space after animation
+                    SizedBox(
+                      width: 15,
+                    ),
+
+                    Center(
+                      child: Text(
+                        long == null ? 'Get Location' : 'Location Obtained',
+                        style: TextStyle(
+                          color: Colors.black,
+                          fontSize: 20.0,
+                        ),
+                      ),
+                    ),
+                  ],
                 ),
               ),
             ),
-            SizedBox(height: 20.0),
+            SizedBox(height: 40.0),
+
             GestureDetector(
               onTap: subm,
               child: Container(
-                padding: EdgeInsets.all(25.0),
-                margin: EdgeInsets.symmetric(horizontal: 90),
                 decoration: BoxDecoration(
-                    color: Colors.amber,
-                    borderRadius: BorderRadius.circular(30.0)),
-                child: Center(
-                  child: Text(
-                    'SUBMIT',
-                    style: TextStyle(
-                      color: Colors.black,
-                      fontSize: 20.0,
-                    ),
+                  gradient: LinearGradient(
+                    colors: [
+                      Color.fromARGB(255, 115, 0, 255),
+                      Color.fromARGB(255, 190, 111, 255)
+                    ],
+                    begin: Alignment.topLeft,
+                    end: Alignment.bottomRight,
                   ),
+                  borderRadius: BorderRadius.circular(30.0),
+                  boxShadow: [
+                    BoxShadow(
+                      color: Colors.black.withOpacity(0.3),
+                      spreadRadius: 2,
+                      blurRadius: 5,
+                      offset: Offset(0, 4), // Shadow position
+                    ),
+                  ],
                 ),
+                child: Center(
+                    child: Text(
+                  "Submit",
+                  style: TextStyle(
+                    color: Colors.white,
+                    fontSize: 18.0,
+                    fontWeight: FontWeight.bold,
+                    letterSpacing: 1.2, // Adds spacing between letters
+                  ),
+                )),
+                width: 200,
+                height: 50,
               ),
             ),
           ],
