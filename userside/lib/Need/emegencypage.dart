@@ -95,7 +95,6 @@ class _emergencypageState extends State<emergencypage> {
         _image1 != null &&
         _currentPosition != null) {
       try {
-        // Upload gallery image to Firebase Storage
         String fileName =
             '${DateTime.now().millisecondsSinceEpoch}_gallery.png';
         Reference storageReferenceGallery =
@@ -103,10 +102,8 @@ class _emergencypageState extends State<emergencypage> {
         UploadTask uploadTaskGallery = storageReferenceGallery.putFile(_image!);
         await uploadTaskGallery;
 
-        // Get gallery image URL
         String imageUrl = await storageReferenceGallery.getDownloadURL();
 
-        // Upload camera image to Firebase Storage
         String fileNameCam =
             '${DateTime.now().millisecondsSinceEpoch}_camera.png';
         Reference storageReferenceCamera = FirebaseStorage.instance
@@ -115,10 +112,8 @@ class _emergencypageState extends State<emergencypage> {
         UploadTask uploadTaskCamera = storageReferenceCamera.putFile(_image1!);
         await uploadTaskCamera;
 
-        // Get camera image URL
         String imageUrlcam = await storageReferenceCamera.getDownloadURL();
 
-        // Upload details to Firestore
         await FirebaseFirestore.instance.collection('emergency').add({
           'happend': problem.text,
           'detail': dicripti.text,
@@ -128,7 +123,6 @@ class _emergencypageState extends State<emergencypage> {
           'longitude': _currentPosition!.longitude,
         });
 
-        // Clear the fields
         problem.clear();
         dicripti.clear();
         setState(() {

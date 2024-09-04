@@ -70,7 +70,7 @@ class _RegisterpageState extends State<Registerpage> {
         } on FirebaseAuthException catch (e) {
           String x = e.code.toString();
           if (x != '') {
-            // dis(e.code);
+            dis(e.code);
           }
         } catch (e) {
           print(e);
@@ -85,6 +85,7 @@ class _RegisterpageState extends State<Registerpage> {
             });
       }
       // Navigator.of(context).pop();
+      Navigator.pop(context);
     }
 
     return Scaffold(

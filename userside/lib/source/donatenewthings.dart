@@ -7,6 +7,7 @@ import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/material.dart';
 import 'package:geolocator/geolocator.dart';
 import 'package:image_picker/image_picker.dart';
+import 'package:userside/source/Loginpage.dart';
 
 class Newthings extends StatefulWidget {
   const Newthings({super.key});
@@ -37,20 +38,22 @@ class _MyWidgetState extends State<Newthings> {
   }
 
   void signout() async {
-    showDialog(
-        context: context,
-        builder: (context) {
-          return Center(
-            child: CircularProgressIndicator(
-              color: Colors.amber,
-            ),
-          );
-        });
+    // showDialog(
+    //     context: context,
+    //     builder: (context) {
+    //       return Center(
+    //         child: CircularProgressIndicator(
+    //           color: const Color.fromARGB(255, 39, 2, 141),
+    //         ),
+    //       );
+    //     });
+
+    Navigator.push(
+        context, MaterialPageRoute(builder: (context) => Loginpage()));
+
     await FirebaseAuth.instance.signOut();
-    Navigator.of(context).pop();
   }
 
-  // Method to pick image from camera
   Future<void> _pickImage1() async {
     final XFile? image =
         await ImagePicker().pickImage(source: ImageSource.camera);
@@ -61,7 +64,6 @@ class _MyWidgetState extends State<Newthings> {
     }
   }
 
-  // Method to get the current location
   Future<void> _getLocation() async {
     bool serviceEnabled;
     LocationPermission permission;

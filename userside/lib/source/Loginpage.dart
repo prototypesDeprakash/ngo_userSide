@@ -28,52 +28,61 @@ class Front extends StatefulWidget {
 
 class _FrontState extends State<Front> {
   final username = TextEditingController();
-
   final password = TextEditingController();
 
   void p1() async {
+    if (username.text.isEmpty || password.text.isEmpty) {
+      wrongpass1('Email or password cannot be empty');
+      return;
+    }
+
     showDialog(
-        context: context,
-        builder: (context) {
-          return Center(
-            child: CircularProgressIndicator(
-              color: Colors.amber,
-            ),
-          );
-        });
+      context: context,
+      builder: (context) {
+        return Center(
+          child: CircularProgressIndicator(
+            color: Colors.amber,
+          ),
+        );
+      },
+    );
+
     try {
       User user = (await FirebaseAuth.instance.signInWithEmailAndPassword(
-              email: username.text, password: password.text))
+        email: username.text,
+        password: password.text,
+      ))
           .user!;
+      Navigator.pop(context);
 
       if (user != null && user.displayName == 'donate') {
-        print("user is not nuull for donate");
+        print("User is not null for donate");
 
-        // Navigator.push(context, MaterialPageRoute(builder: (context)=>Newthings()));
         WidgetsBinding.instance.addPostFrameCallback((_) {
           Navigator.push(
             context,
             MaterialPageRoute(builder: (context) => Newthings()),
           );
-          // Navigator.of(context).pop();
         });
       } else {
         print("User is null or not suitable");
+        wrongpass1('User not authorized or not found.');
       }
     } on FirebaseAuthException catch (e) {
-      wrongpass1(e.code == '');
-    }
-    // Navigator.of(context).pop();
+      wrongpass1(e.message ?? 'An error occurred');
+    } finally {}
   }
 
-  wrongpass1(s) {
+  void wrongpass1(String errorMessage) {
     showDialog(
-        context: context,
-        builder: (context) {
-          return AlertDialog(
-            title: Text('WRONG CREDENTIALS'),
-          );
-        });
+      context: context,
+      builder: (context) {
+        return AlertDialog(
+          title: Text('Login Failed'),
+          content: Text(errorMessage),
+        );
+      },
+    );
   }
 
   @override
@@ -92,20 +101,17 @@ class _FrontState extends State<Front> {
         ),
         backgroundColor: Color.fromARGB(255, 19, 0, 233),
       ),
-      // backgroundColor: Colors.grey.gr,
       body: Container(
-        //adding background gradient desing
         decoration: BoxDecoration(
           gradient: LinearGradient(
             colors: [
               Color.fromARGB(255, 19, 0, 233),
               Color.fromARGB(255, 141, 139, 255)
-            ], // Your gradient colors here
+            ],
             begin: Alignment.topLeft,
             end: Alignment.bottomRight,
           ),
         ),
-
         child: Column(
           children: [
             Align(alignment: Alignment.center),
@@ -115,7 +121,6 @@ class _FrontState extends State<Front> {
               width: 300,
               height: 300,
             ),
-            //SizedBox(height: 5),
             Textfield(
               controller: username,
               hinttext: 'E-mail ',
@@ -136,9 +141,6 @@ class _FrontState extends State<Front> {
               ),
             ),
             SizedBox(height: 50),
-
-            // submoit buttton
-
             GestureDetector(
               onTap: p1,
               child: Container(
@@ -159,7 +161,7 @@ class _FrontState extends State<Front> {
                       color: Colors.black.withOpacity(0.3),
                       spreadRadius: 2,
                       blurRadius: 5,
-                      offset: Offset(0, 4), // Shadow position
+                      offset: Offset(0, 4),
                     ),
                   ],
                 ),
@@ -170,15 +172,12 @@ class _FrontState extends State<Front> {
                       color: Colors.white,
                       fontSize: 18.0,
                       fontWeight: FontWeight.bold,
-                      letterSpacing: 1.2, // Adds spacing between letters
+                      letterSpacing: 1.2,
                     ),
                   ),
                 ),
               ),
             ),
-
-//end of button
-
             SizedBox(height: 50),
             Row(
               children: [
@@ -197,9 +196,7 @@ class _FrontState extends State<Front> {
                     ),
                   ),
                 ),
-                SizedBox(
-                  width: 10,
-                ),
+                SizedBox(width: 10),
                 GestureDetector(
                   onTap: () {
                     Navigator.push(

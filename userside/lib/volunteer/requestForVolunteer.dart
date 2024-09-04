@@ -102,6 +102,10 @@ class _RequestforvolunteerState extends State<Requestforvolunteer> {
                             phone: phoneNumber.text,
                             age: age.text);
                       }
+                      name.text = '';
+                      email.text = '';
+                      phoneNumber.text = '';
+                      age.text = '';
                     },
                     child: Text("Submit"))
               ],
@@ -125,10 +129,12 @@ class _RequestforvolunteerState extends State<Requestforvolunteer> {
       'name': name,
       'email': email,
       'phoneNumBer': phone,
-      'age': age
+      'age': age,
+      'role': 'volunteer',
     }).whenComplete(() {
       ScaffoldMessenger.of(context)
           .showSnackBar(SnackBar(content: Text("UPDATED SUCCESSFULLY")));
     });
+    
   }
 }
