@@ -153,6 +153,7 @@ class _emergencypageState extends State<emergencypage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      resizeToAvoidBottomInset: false,
       appBar: AppBar(
         title: Center(
             child: Text(

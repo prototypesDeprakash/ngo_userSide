@@ -1,14 +1,14 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 
-class Requestforvolunteer extends StatefulWidget {
-  const Requestforvolunteer({super.key});
+class MyWidget extends StatefulWidget {
+  const MyWidget({super.key});
 
   @override
-  State<Requestforvolunteer> createState() => _RequestforvolunteerState();
+  State<MyWidget> createState() => _MyWidgetState();
 }
 
-class _RequestforvolunteerState extends State<Requestforvolunteer> {
+class _MyWidgetState extends State<MyWidget> {
   final formKey = GlobalKey<FormState>();
 
   final TextEditingController name = TextEditingController();
@@ -135,6 +135,5 @@ class _RequestforvolunteerState extends State<Requestforvolunteer> {
       ScaffoldMessenger.of(context)
           .showSnackBar(SnackBar(content: Text("UPDATED SUCCESSFULLY")));
     });
-    
   }
 }

@@ -1,30 +1,17 @@
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:userside/Volunteer/Textfield.dart';
 import 'package:userside/Volunteer/menu.dart';
 
-class Loginpage extends StatefulWidget {
-  Loginpage({super.key});
+class Front_vol_ extends StatefulWidget {
+  Front_vol_({super.key});
 
   @override
-  State<Loginpage> createState() => _LoginpageState();
+  State<Front_vol_> createState() => _FrontState();
 }
 
-class _LoginpageState extends State<Loginpage> {
-  @override
-  Widget build(BuildContext context) {
-    return MaterialApp(debugShowCheckedModeBanner: false, home: Front());
-  }
-}
-
-class Front extends StatefulWidget {
-  Front({super.key});
-
-  @override
-  State<Front> createState() => _FrontState();
-}
-
-class _FrontState extends State<Front> {
+class _FrontState extends State<Front_vol_> {
   final username = TextEditingController();
 
   final password = TextEditingController();

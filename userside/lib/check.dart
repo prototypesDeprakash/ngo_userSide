@@ -2,7 +2,8 @@ import 'package:flutter/widgets.dart';
 import 'package:lottie/lottie.dart';
 import 'package:userside/Need/itemslistp.dart';
 import 'package:userside/source/auth_page.dart';
-import 'package:userside/volunteer/main.dart';
+import 'package:userside/volun.dart/vol_auth.dart';
+import 'package:userside/volun.dart/vol_main.dart';
 import 'package:flutter/material.dart';
 
 class Check extends StatelessWidget {
@@ -191,7 +192,7 @@ class Front extends StatelessWidget {
             GestureDetector(
               onTap: () {
                 Navigator.push(context,
-                    MaterialPageRoute(builder: (context) => Checkvol()));
+                    MaterialPageRoute(builder: (context) => vol_auth()));
               },
               child: Container(
                 padding: EdgeInsets.symmetric(vertical: 15.0, horizontal: 25.0),
@@ -217,7 +218,7 @@ class Front extends StatelessWidget {
                 ),
                 child: Center(
                   child: Text(
-                    'Voluntear',
+                    'Volunteer',
                     style: TextStyle(
                       color: Colors.white,
                       fontSize: 18.0,

@@ -10,7 +10,6 @@ import 'package:flutter_test/flutter_test.dart';
 import 'package:userside/check.dart';
 
 import 'package:userside/main.dart';
-import 'package:userside/volunteer/main.dart';
 
 void main() {
   testWidgets('Counter increments smoke test', (WidgetTester tester) async {

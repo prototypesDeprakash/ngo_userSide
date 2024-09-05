@@ -3,16 +3,18 @@ import 'package:flutter/material.dart';
 import 'package:userside/Volunteer/Query.dart';
 import 'package:userside/Volunteer/delevery.dart';
 import 'package:userside/Volunteer/emergency.dart';
+import 'package:userside/check.dart';
 
 class Deliverypage extends StatelessWidget {
   const Deliverypage({super.key});
 
-  void signout() {
-    FirebaseAuth.instance.signOut();
-  }
-
   @override
   Widget build(BuildContext context) {
+    void signout() {
+      FirebaseAuth.instance.signOut();
+      Navigator.push(context, MaterialPageRoute(builder: (context) => Check()));
+    }
+
     void del() {
       Navigator.push(
         context,
