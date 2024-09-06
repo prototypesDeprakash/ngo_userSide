@@ -16,6 +16,14 @@ class _qpageState extends State<qpage> {
   final TextEditingController nameController = TextEditingController();
   final TextEditingController phoneController = TextEditingController();
   final TextEditingController addressController = TextEditingController();
+  final TextEditingController discription = TextEditingController();
+  String options = 'food';
+  var items = {
+    'food',
+    'cloth',
+    'medicine',
+    'education',
+  };
 
   Future<void> postQuery() async {
     showDialog(
@@ -28,11 +36,11 @@ class _qpageState extends State<qpage> {
           );
         });
     if (quertext.text.isNotEmpty &&
-        nameController.text.isNotEmpty &&
-        phoneController.text.isNotEmpty &&
-        addressController.text.isNotEmpty) {
+            nameController.text.isNotEmpty &&
+            phoneController.text.isNotEmpty &&
+            addressController.text.isNotEmpty ||
+        discription.text.isNotEmpty) {
       try {
-        // Check location permission
         LocationPermission permission = await Geolocator.checkPermission();
         if (permission == LocationPermission.denied) {
           permission = await Geolocator.requestPermission();
@@ -46,25 +54,28 @@ class _qpageState extends State<qpage> {
           return;
         }
 
-        // Get current location
         Position position = await Geolocator.getCurrentPosition(
             desiredAccuracy: LocationAccuracy.high);
 
-        // Upload all details to Firestore
-        await FirebaseFirestore.instance.collection('query').add({
+        await FirebaseFirestore.instance
+            .collection('query')
+            .doc('$options')
+            .set({
           'queryname': quertext.text,
           'name': nameController.text,
           'phone': phoneController.text,
           'address': addressController.text,
           'latitude': position.latitude,
           'longitude': position.longitude,
+          'discription': discription.text,
+          'options': options,
         });
 
-        // Clear the text fields
         quertext.clear();
         nameController.clear();
         phoneController.clear();
         addressController.clear();
+        discription.clear();
 
         ScaffoldMessenger.of(context).showSnackBar(
           SnackBar(content: Text('Details posted successfully')),
@@ -88,7 +99,6 @@ class _qpageState extends State<qpage> {
       appBar: AppBar(
         automaticallyImplyLeading: false,
         title: Center(
-          
           child: Text(
             'What\'s your need ',
             style: TextStyle(color: Colors.white),
@@ -123,8 +133,17 @@ class _qpageState extends State<qpage> {
                   width: 250,
                   height: 250,
                 ),
+                Textfield(
+                  hinttext: 'Enter your Name',
+                  obsecuretext: false,
+                  i: Icon(
+                    Icons.person,
+                    color: Colors.white,
+                  ),
+                  controller: nameController,
+                ),
                 SizedBox(
-                  height: 10,
+                  height: 20,
                 ),
                 Textfield(
                   hinttext: 'Enter the Query',
@@ -135,15 +154,47 @@ class _qpageState extends State<qpage> {
                   ),
                   controller: quertext,
                 ),
+                SizedBox(
+                  height: 20,
+                ),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Icon(
+                      Icons.arrow_drop_down_circle,
+                      color: Colors.white,
+                    ),
+                    SizedBox(
+                      width: 30,
+                    ),
+                    DropdownButton(
+                        dropdownColor: Colors.purple,
+                        style: TextStyle(color: Colors.white),
+                        value: options,
+                        icon: Icon(
+                          Icons.keyboard_arrow_down_outlined,
+                          color: Colors.white,
+                        ),
+                        items: items.map((String items) {
+                          return DropdownMenuItem(
+                              value: items, child: Text(items));
+                        }).toList(),
+                        onChanged: (String? newvalue) {
+                          setState(() {
+                            options = newvalue!;
+                          });
+                        }),
+                  ],
+                ),
                 SizedBox(height: 20.0),
                 Textfield(
-                  hinttext: 'Enter your Name',
+                  hinttext: 'Enter the Query Discription ',
                   obsecuretext: false,
                   i: Icon(
-                    Icons.person,
+                    Icons.type_specimen,
                     color: Colors.white,
                   ),
-                  controller: nameController,
+                  controller: discription,
                 ),
                 SizedBox(height: 20.0),
                 Textfield(

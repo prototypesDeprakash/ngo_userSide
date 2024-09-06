@@ -23,6 +23,13 @@ class _MyWidgetState extends State<Newthings> {
   File? _image1;
   String? lat;
   String? long;
+  String options = 'food';
+  var items = {
+    'food',
+    'cloth',
+    'medicine',
+    'education',
+  };
   final CollectionReference _items =
       FirebaseFirestore.instance.collection("requirements");
 
@@ -135,13 +142,14 @@ class _MyWidgetState extends State<Newthings> {
             _image1 != null ? await _uploadCameraImage(_image1) : null;
 
         // Store data in Firestore
-        await _items.add({
+        await _items.doc('$options').set({
           "pname": proname,
           "pdes": pdes,
           "imageUrl": imageUrl,
           if (imagecamurl != null) "imagecamurl": imagecamurl,
           if (lat != null) "latitude": lat,
           if (long != null) "longitude": long,
+          "options": options,
         });
 
         pname.clear();
@@ -294,8 +302,39 @@ class _MyWidgetState extends State<Newthings> {
                   color: Colors.white,
                 ),
               ),
-              SizedBox(height: 40),
-
+              SizedBox(height: 20),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Icon(
+                    Icons.arrow_drop_down_circle,
+                    color: Colors.white,
+                  ),
+                  SizedBox(
+                    width: 30,
+                  ),
+                  DropdownButton(
+                      dropdownColor: Colors.purple,
+                      style: TextStyle(color: Colors.white),
+                      value: options,
+                      icon: Icon(
+                        Icons.keyboard_arrow_down_outlined,
+                        color: Colors.white,
+                      ),
+                      items: items.map((String items) {
+                        return DropdownMenuItem(
+                            value: items, child: Text(items));
+                      }).toList(),
+                      onChanged: (String? newvalue) {
+                        setState(() {
+                          options = newvalue!;
+                        });
+                      }),
+                ],
+              ),
+              SizedBox(
+                height: 20,
+              ),
               //first box
 
               //first button
