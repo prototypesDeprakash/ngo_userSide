@@ -59,8 +59,7 @@ class _qpageState extends State<qpage> {
 
         await FirebaseFirestore.instance
             .collection('query')
-            .doc('$options')
-            .set({
+            .add({
           'queryname': quertext.text,
           'name': nameController.text,
           'phone': phoneController.text,

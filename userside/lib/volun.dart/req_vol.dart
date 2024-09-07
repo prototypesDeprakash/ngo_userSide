@@ -125,7 +125,10 @@ class _MyWidgetState extends State<MyWidget> {
     print(phone);
     print(email);
     print(age);
-    await FirebaseFirestore.instance.collection("VOLUNTEER REQUEST").doc().set({
+    await FirebaseFirestore.instance
+        .collection("VOLUNTEER REQUEST")
+        .doc('$phone')
+        .set({
       'name': name,
       'email': email,
       'phoneNumBer': phone,

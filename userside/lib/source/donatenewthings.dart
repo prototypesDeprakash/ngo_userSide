@@ -142,7 +142,7 @@ class _MyWidgetState extends State<Newthings> {
             _image1 != null ? await _uploadCameraImage(_image1) : null;
 
         // Store data in Firestore
-        await _items.doc('$options').set({
+        await _items.add({
           "pname": proname,
           "pdes": pdes,
           "imageUrl": imageUrl,
