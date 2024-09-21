@@ -4,6 +4,7 @@ import 'package:userside/source/donatenewthings.dart';
 import 'package:userside/source/registerpage.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:userside/theme_global.dart';
 
 class Loginpage extends StatefulWidget {
   Loginpage({super.key});
@@ -99,15 +100,12 @@ class _FrontState extends State<Front> {
             ),
           ),
         ),
-        backgroundColor: Color.fromARGB(255, 19, 0, 233),
+        backgroundColor: But1,
       ),
       body: Container(
         decoration: BoxDecoration(
           gradient: LinearGradient(
-            colors: [
-              Color.fromARGB(255, 19, 0, 233),
-              Color.fromARGB(255, 141, 139, 255)
-            ],
+            colors: [Bg1, Bg2],
             begin: Alignment.topLeft,
             end: Alignment.bottomRight,
           ),
@@ -128,7 +126,7 @@ class _FrontState extends State<Front> {
                 obsecuretext: false,
                 i: Icon(
                   Icons.email,
-                  color: Colors.white,
+                  color: ico1,
                 ),
               ),
               SizedBox(height: 40),
@@ -138,7 +136,7 @@ class _FrontState extends State<Front> {
                 obsecuretext: true,
                 i: Icon(
                   Icons.security,
-                  color: Colors.white,
+                  color: ico1,
                 ),
               ),
               SizedBox(height: 50),
@@ -148,25 +146,7 @@ class _FrontState extends State<Front> {
                   padding:
                       EdgeInsets.symmetric(vertical: 15.0, horizontal: 25.0),
                   margin: EdgeInsets.symmetric(horizontal: 50),
-                  decoration: BoxDecoration(
-                    gradient: LinearGradient(
-                      colors: [
-                        Color.fromARGB(255, 115, 0, 255),
-                        Color.fromARGB(255, 190, 111, 255)
-                      ],
-                      begin: Alignment.topLeft,
-                      end: Alignment.bottomRight,
-                    ),
-                    borderRadius: BorderRadius.circular(30.0),
-                    boxShadow: [
-                      BoxShadow(
-                        color: Colors.black.withOpacity(0.3),
-                        spreadRadius: 2,
-                        blurRadius: 5,
-                        offset: Offset(0, 4),
-                      ),
-                    ],
-                  ),
+                  decoration: myBoxDecoration,
                   child: Center(
                     child: Text(
                       'Submit',
@@ -185,7 +165,7 @@ class _FrontState extends State<Front> {
                 children: [
                   Padding(
                     padding: const EdgeInsets.all(10.0),
-                    child: Lottie.asset("assets/animations/indicate2.json",
+                    child: Lottie.asset("assets/animations/arrowBl.json",
                         width: 100, height: 100),
                   ),
                   Padding(
@@ -193,7 +173,7 @@ class _FrontState extends State<Front> {
                     child: Text(
                       'Not a member ? ',
                       style: TextStyle(
-                        color: Colors.white,
+                        color: textfieldtext,
                         fontSize: 15,
                       ),
                     ),

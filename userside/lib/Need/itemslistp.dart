@@ -229,6 +229,7 @@ import 'package:userside/Need/emegencypage.dart';
 import 'package:userside/Need/qp.dart';
 import 'package:flutter/material.dart';
 import 'package:lottie/lottie.dart';
+import 'package:userside/theme_global.dart';
 
 class ItemListPage extends StatelessWidget {
   const ItemListPage({super.key});
@@ -246,16 +247,13 @@ class ItemListPage extends StatelessWidget {
               color: Colors.white,
             ),
           )),
-          backgroundColor: Color.fromARGB(255, 19, 0, 233),
+          backgroundColor: But1,
         ),
         body: Container(
           // adding gradient design background
           decoration: BoxDecoration(
             gradient: LinearGradient(
-              colors: [
-                Color.fromARGB(255, 19, 0, 233),
-                Color.fromARGB(255, 141, 139, 255)
-              ], // Your gradient colors here
+              colors: [Bg1, Bg2], // Your gradient colors here
               begin: Alignment.topLeft,
               end: Alignment.bottomRight,
             ),
@@ -286,13 +284,23 @@ class ItemListPage extends StatelessWidget {
                           SizedBox(
                             height: 25,
                           ),
-                          Text(
-                            'Request help',
-                            style: TextStyle(
-                              color: Colors.white,
-                              fontSize: 24.0,
-                              fontWeight: FontWeight.bold,
-                              letterSpacing: 1.2,
+                          Container(
+                            padding: EdgeInsets.symmetric(
+                                vertical: 15.0, horizontal: 25.0),
+                            margin: EdgeInsets.symmetric(horizontal: 50),
+                            decoration:
+                                myBoxDecoration, //myBoxDecoration -> code for this is written in theme_global
+                            child: Center(
+                              child: Text(
+                                'Request help',
+                                style: TextStyle(
+                                  color: Colors.white,
+                                  fontSize: 18.0,
+                                  fontWeight: FontWeight.bold,
+                                  letterSpacing:
+                                      1.2, // Adds spacing between letters
+                                ),
+                              ),
                             ),
                           ),
                         ],
@@ -315,15 +323,34 @@ class ItemListPage extends StatelessWidget {
                       child: Lottie.asset("assets/animations/emergency2.json"),
                       // color: Colors.white,
                     ),
-                    Text(
-                      'Emergency help',
-                      style: TextStyle(
-                        color: Colors.white,
-                        fontSize: 24.0,
-                        fontWeight: FontWeight.bold,
-                        letterSpacing: 1.2,
+                    //button
+                    Container(
+                      padding: EdgeInsets.symmetric(
+                          vertical: 15.0, horizontal: 25.0),
+                      margin: EdgeInsets.symmetric(horizontal: 50),
+                      decoration:
+                          myBoxDecoration, //myBoxDecoration -> code for this is written in theme_global
+                      child: Center(
+                        child: Text(
+                          'Emergency',
+                          style: TextStyle(
+                            color: Colors.white,
+                            fontSize: 18.0,
+                            fontWeight: FontWeight.bold,
+                            letterSpacing: 1.2, // Adds spacing between letters
+                          ),
+                        ),
                       ),
                     ),
+                    // Text(
+                    //   'Emergency help',
+                    //   style: TextStyle(
+                    //     color: Btext1,
+                    //     fontSize: 24.0,
+                    //     fontWeight: FontWeight.bold,
+                    //     letterSpacing: 1.2,
+                    //   ),
+                    // ),
                   ],
                 ),
               ),

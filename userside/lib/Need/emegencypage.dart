@@ -7,6 +7,8 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:geolocator/geolocator.dart';
 import 'dart:io';
 
+import 'package:userside/theme_global.dart';
+
 class emergencypage extends StatefulWidget {
   const emergencypage({super.key});
 
@@ -163,17 +165,14 @@ class _emergencypageState extends State<emergencypage> {
           ),
         )),
         automaticallyImplyLeading: false,
-        backgroundColor: Color.fromARGB(255, 19, 0, 233),
+        backgroundColor: But1,
       ),
       body: SingleChildScrollView(
         child: Container(
           //background gradient
           decoration: BoxDecoration(
             gradient: LinearGradient(
-              colors: [
-                Color.fromARGB(255, 19, 0, 233),
-                Color.fromARGB(255, 141, 139, 255)
-              ], // Your gradient colors here
+              colors: [Bg1, Bg2], // Your gradient colors here
               begin: Alignment.topLeft,
               end: Alignment.bottomRight,
             ),
@@ -196,7 +195,7 @@ class _emergencypageState extends State<emergencypage> {
                 obsecuretext: false,
                 i: Icon(
                   Icons.report_problem,
-                  color: Colors.white,
+                  color: ico1,
                 ),
               ),
               SizedBox(height: 40),
@@ -206,7 +205,7 @@ class _emergencypageState extends State<emergencypage> {
                 obsecuretext: false,
                 i: Icon(
                   Icons.description,
-                  color: Colors.white,
+                  color: ico1,
                 ),
               ),
               SizedBox(height: 40),
@@ -218,25 +217,7 @@ class _emergencypageState extends State<emergencypage> {
                   padding:
                       EdgeInsets.symmetric(vertical: 15.0, horizontal: 25.0),
                   margin: EdgeInsets.symmetric(horizontal: 50),
-                  decoration: BoxDecoration(
-                    gradient: LinearGradient(
-                      colors: [
-                        Color.fromARGB(255, 19, 0, 233),
-                        Color.fromARGB(255, 141, 139, 255)
-                      ],
-                      begin: Alignment.topLeft,
-                      end: Alignment.bottomRight,
-                    ),
-                    borderRadius: BorderRadius.circular(30.0),
-                    boxShadow: [
-                      BoxShadow(
-                        color: Colors.black.withOpacity(0.3),
-                        spreadRadius: 2,
-                        blurRadius: 5,
-                        offset: Offset(0, 4), // Shadow position
-                      ),
-                    ],
-                  ),
+                  decoration: myBoxDecoration,
                   child: Row(
                     //animation
                     children: [
@@ -276,25 +257,7 @@ class _emergencypageState extends State<emergencypage> {
                   padding:
                       EdgeInsets.symmetric(vertical: 15.0, horizontal: 25.0),
                   margin: EdgeInsets.symmetric(horizontal: 50),
-                  decoration: BoxDecoration(
-                    gradient: LinearGradient(
-                      colors: [
-                        Color.fromARGB(255, 19, 0, 233),
-                        Color.fromARGB(255, 141, 139, 255)
-                      ],
-                      begin: Alignment.topLeft,
-                      end: Alignment.bottomRight,
-                    ),
-                    borderRadius: BorderRadius.circular(30.0),
-                    boxShadow: [
-                      BoxShadow(
-                        color: Colors.black.withOpacity(0.3),
-                        spreadRadius: 2,
-                        blurRadius: 5,
-                        offset: Offset(0, 4), // Shadow position
-                      ),
-                    ],
-                  ),
+                  decoration: myBoxDecoration,
                   child: Row(
                     //animation
                     children: [
@@ -334,25 +297,7 @@ class _emergencypageState extends State<emergencypage> {
                   padding:
                       EdgeInsets.symmetric(vertical: 15.0, horizontal: 25.0),
                   margin: EdgeInsets.symmetric(horizontal: 50),
-                  decoration: BoxDecoration(
-                    gradient: LinearGradient(
-                      colors: [
-                        Color.fromARGB(255, 19, 0, 233),
-                        Color.fromARGB(255, 141, 139, 255)
-                      ],
-                      begin: Alignment.topLeft,
-                      end: Alignment.bottomRight,
-                    ),
-                    borderRadius: BorderRadius.circular(30.0),
-                    boxShadow: [
-                      BoxShadow(
-                        color: Colors.black.withOpacity(0.3),
-                        spreadRadius: 2,
-                        blurRadius: 5,
-                        offset: Offset(0, 4), // Shadow position
-                      ),
-                    ],
-                  ),
+                  decoration: myBoxDecoration,
                   child: Row(
                     //animation
                     children: [
@@ -390,25 +335,7 @@ class _emergencypageState extends State<emergencypage> {
               GestureDetector(
                 onTap: uploadData,
                 child: Container(
-                  decoration: BoxDecoration(
-                    gradient: LinearGradient(
-                      colors: [
-                        Color.fromARGB(255, 115, 0, 255),
-                        Color.fromARGB(255, 190, 111, 255)
-                      ],
-                      begin: Alignment.topLeft,
-                      end: Alignment.bottomRight,
-                    ),
-                    borderRadius: BorderRadius.circular(30.0),
-                    boxShadow: [
-                      BoxShadow(
-                        color: Colors.black.withOpacity(0.3),
-                        spreadRadius: 2,
-                        blurRadius: 5,
-                        offset: Offset(0, 4), // Shadow position
-                      ),
-                    ],
-                  ),
+                  decoration: mySpecialBoxDecoration,
                   child: Center(
                       child: Text(
                     "Submit",

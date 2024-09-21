@@ -3,6 +3,7 @@ import 'package:userside/Textfield.dart';
 import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:geolocator/geolocator.dart';
+import 'package:userside/theme_global.dart';
 
 class qpage extends StatefulWidget {
   const qpage({super.key});
@@ -57,9 +58,7 @@ class _qpageState extends State<qpage> {
         Position position = await Geolocator.getCurrentPosition(
             desiredAccuracy: LocationAccuracy.high);
 
-        await FirebaseFirestore.instance
-            .collection('query')
-            .add({
+        await FirebaseFirestore.instance.collection('query').add({
           'queryname': quertext.text,
           'name': nameController.text,
           'phone': phoneController.text,
@@ -103,17 +102,14 @@ class _qpageState extends State<qpage> {
             style: TextStyle(color: Colors.white),
           ),
         ),
-        backgroundColor: const Color.fromARGB(255, 19, 0, 233),
+        backgroundColor: But1,
       ),
       body: SingleChildScrollView(
         child: Container(
           //background gradient
           decoration: BoxDecoration(
             gradient: LinearGradient(
-              colors: [
-                Color.fromARGB(255, 19, 0, 233),
-                Color.fromARGB(255, 141, 139, 255)
-              ], // Your gradient colors here
+              colors: [Bg1, Bg2], // Your gradient colors here
               begin: Alignment.topLeft,
               end: Alignment.bottomRight,
             ),
@@ -137,7 +133,7 @@ class _qpageState extends State<qpage> {
                   obsecuretext: false,
                   i: Icon(
                     Icons.person,
-                    color: Colors.white,
+                    color: ico1,
                   ),
                   controller: nameController,
                 ),
@@ -149,7 +145,7 @@ class _qpageState extends State<qpage> {
                   obsecuretext: false,
                   i: Icon(
                     Icons.type_specimen,
-                    color: Colors.white,
+                    color: ico1,
                   ),
                   controller: quertext,
                 ),
@@ -161,18 +157,20 @@ class _qpageState extends State<qpage> {
                   children: [
                     Icon(
                       Icons.arrow_drop_down_circle,
-                      color: Colors.white,
+                      color: ico1,
                     ),
                     SizedBox(
-                      width: 30,
+                      width: 50,
                     ),
                     DropdownButton(
-                        dropdownColor: Colors.purple,
-                        style: TextStyle(color: Colors.white),
+                        dropdownColor: dropdowncol,
+                        style: TextStyle(
+                            color: const Color.fromARGB(255, 0, 0, 0)),
                         value: options,
                         icon: Icon(
                           Icons.keyboard_arrow_down_outlined,
-                          color: Colors.white,
+                          color: ico1,
+                          size: 30,
                         ),
                         items: items.map((String items) {
                           return DropdownMenuItem(
@@ -183,6 +181,9 @@ class _qpageState extends State<qpage> {
                             options = newvalue!;
                           });
                         }),
+                    SizedBox(
+                      width: 160,
+                    ),
                   ],
                 ),
                 SizedBox(height: 20.0),
@@ -191,7 +192,7 @@ class _qpageState extends State<qpage> {
                   obsecuretext: false,
                   i: Icon(
                     Icons.type_specimen,
-                    color: Colors.white,
+                    color: ico1,
                   ),
                   controller: discription,
                 ),
@@ -201,7 +202,7 @@ class _qpageState extends State<qpage> {
                   obsecuretext: false,
                   i: Icon(
                     Icons.phone,
-                    color: Colors.white,
+                    color: ico1,
                   ),
                   controller: phoneController,
                 ),
@@ -211,7 +212,7 @@ class _qpageState extends State<qpage> {
                   obsecuretext: false,
                   i: Icon(
                     Icons.location_city,
-                    color: Colors.white,
+                    color: ico1,
                   ),
                   controller: addressController,
                 ),
@@ -219,25 +220,7 @@ class _qpageState extends State<qpage> {
                 GestureDetector(
                   onTap: postQuery,
                   child: Container(
-                    decoration: BoxDecoration(
-                      gradient: LinearGradient(
-                        colors: [
-                          Color.fromARGB(255, 115, 0, 255),
-                          Color.fromARGB(255, 190, 111, 255)
-                        ],
-                        begin: Alignment.topLeft,
-                        end: Alignment.bottomRight,
-                      ),
-                      borderRadius: BorderRadius.circular(30.0),
-                      boxShadow: [
-                        BoxShadow(
-                          color: Colors.black.withOpacity(0.3),
-                          spreadRadius: 2,
-                          blurRadius: 5,
-                          offset: Offset(0, 4), // Shadow position
-                        ),
-                      ],
-                    ),
+                    decoration: mySpecialBoxDecoration,
                     child: Center(
                         child: Text(
                       "Send",
